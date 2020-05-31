@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+</head>
+<body>
+
+
+
+	<div class="container mt-4">
+	
+	<a th:href="@{/new}" class="btn btn-primary">Nuevo</a>
+	<br /><br />
+		<table class="table">
+			<thead>
+
+				<tr>
+
+					<th>ID</th>
+					<th>NOMBRES</th>
+					<th>TELEFONO</th>
+					<th>ACCIONES</th>
+
+				</tr>
+
+			</thead>
+			<tbody>
+
+				<tr th:each="persona:${personas}">
+
+					<td th:text="${persona.id}"></td>
+					<td th:text="${persona.name}"></td>
+					<td th:text="${persona.telefono}"></td>
+					<td>
+						<a th:href="@{/editar/}+${persona.id}" class="btn btn-warning">Editar</a>
+						<a th:onclick="eliminar([[${persona.id}]])" class="btn btn-danger">Eliminar</a>
+					</td>
+
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="funciones.js"></script>
+
+</body>
+</html>
